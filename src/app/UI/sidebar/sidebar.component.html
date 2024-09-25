@@ -1,0 +1,27 @@
+<img class="ml-16 mb-20" src="/assets/icons/big-logo.svg" alt="" />
+
+<nav>
+  <ul class="menu-list">
+    @for(menuItem of menuItems; track menuItem.icon) {
+    <li class="menu-list__item">
+      <button class="menu-list__item__action">
+        <svg [icon]="menuItem.icon"></svg>
+        {{ menuItem.label }}
+      </button>
+    </li>
+    }
+  </ul>
+</nav>
+
+<p>Подписчики</p>
+
+<pre>{{subscribers$ | async | json }}</pre>
+
+<!-- <app-subscriber-card></app-subscriber-card> -->
+
+<div class="mt20 to-subscribers">
+    <a [routerLink]="['/subscribers']" class="to-subscribers__link medium-text">
+        Все подписчики
+    </a>
+    <svg class="to-subscribers__icon" icon="arrow-right"></svg>
+</div>

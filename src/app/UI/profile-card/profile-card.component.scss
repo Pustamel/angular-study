@@ -1,0 +1,45 @@
+p {
+  margin: 0;
+}
+
+.profile-card {
+  border: 1px solid var(--light-color);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px 10px;
+
+  &__avatar-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+
+      :first-child {
+        //font-weight: bold;
+      }
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .actions {
+
+  }
+}

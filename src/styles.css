@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+@import "fonts.scss";
+@import "margins.scss";
+
+:root {
+  --dark-color: #000;
+  --light-color: #fff;
+  --purple-color: #ae7aff;
+  --dark-hover-color: #3d3d3d70
+}
+
+body {
+  /* background-color: var(--dark-color); */
+  color: var(--light-color);
+  font-family: "JetBrains Mono", sans-serif;
+  background-image: url(/assets/imgs/background.jpg);
+}
+
+.skill-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--light-color);
+  display: inline;
+  font-size: 12px;
+  font-weight: 700;
+  /* height: 20px; */
+  box-sizing: border-box;
+}
+
+.btn {
+  border: none;
+  background-color: var(--purple-color);
+  color: var(--dark-color);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.h1 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+}
+
+.tt-control-label {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 16px;
+  display: block;
+}
+
+.tt-control-input {
+  display: block;
+  border: 1px solid var(--light-color);
+  border-radius: 4px;
+  padding: 12px 20px;
+  background: var(--dark-color);
+  color: var(--light-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "JetBrains Mono", sans-serif;
+  margin-top: 8px;
+}

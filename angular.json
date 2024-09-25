@@ -5,7 +5,11 @@
   "projects": {
     "study-angular": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -92,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f2157b6d-fd8d-48b8-b90b-c4212c581b85"
   }
 }
