@@ -1,0 +1,82 @@
+<app-user-short-info></app-user-short-info>
+
+<form class="profile-form-wrapper" action="" [formGroup]="form">
+  <div class="profile-form">
+    <div class="two-columns mb-20">
+      <label class="label-input-underline">
+        <span class="label-input-underline_text">Имя</span>
+        <input
+          formControlName="firstName"
+          placeholder="Введите имя"
+          type="text"
+          class="input-underline"
+        />
+      </label>
+      <label class="label-input-underline">
+        <span class="label-input-underline_text">Фамилия</span>
+        <input
+          formControlName="lastName"
+          placeholder="Введите фамилию"
+          type="text"
+          class="input-underline"
+        />
+      </label>
+    </div>
+    <label class="label-input-underline mb-20">
+      <span class="label-input-underline_text">Telegram username</span>
+      <input
+        formControlName="username"
+        placeholder="Введите Telegram username"
+        type="text"
+        class="input-underline"
+      />
+    </label>
+    <label class="label-input-underline mb-20">
+      <span class="label-input-underline_text">О себе</span>
+      <textarea
+        formControlName="description"
+        placeholder="Напишите о себе"
+        type="text"
+        rows="4"
+        class="input-underline textarea"
+      ></textarea>
+    </label>
+
+    <app-photo></app-photo>
+
+    <label class="label-input-underline mb-20">
+      <span class="label-input-underline_text">Навыки</span>
+      <input
+        formControlName="stack"
+        placeholder="Введите навык через запятую"
+        type="text"
+        class="input-underline"
+      />
+    </label>
+    @if(showStack().length) {
+      <div class="skills">
+        @for(skill of showStack(); track skill) {
+          <div class="skill-tag">
+            {{skill}}
+          </div>
+        }
+          
+      </div>
+    }
+  </div>
+
+  <div class="btns">
+    <div class="btns-left">
+      <button class="btn bordered-btn logout-btn">
+        <!-- <svg class="logout-btn__icon" name="logout"></svg> -->
+        <a  [routerLink]="['/login']">
+            <svg class="logout-btn__icon" icon="logout"> </svg>
+          </a>
+      </button>
+    </div>
+    <div class="btns-right">
+      <button class="btn bordered-btn">Отмена</button>
+      <button (click)="onSave()" class="btn ml-16">Сохранить</button>
+    </div>
+  </div>
+</form>

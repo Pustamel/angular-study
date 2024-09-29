@@ -5,10 +5,10 @@ import {
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from './auth.service';
-import { catchError, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, filter, switchMap, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
-let isRefreshing = false;
+let isRefreshing$ = new BehaviorSubject<boolean>(false);
 
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = inject(AuthService).accessToken;
@@ -17,7 +17,7 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   if (!token) return next(req);
 
-  if (isRefreshing) {
+  if (isRefreshing$.value) {
     return refreshing(authService, req, next);
   }
 
@@ -38,18 +38,31 @@ function refreshing(
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ) {
-  if (!isRefreshing) {
-    isRefreshing = true;
-    return authService.makeRefreshToken().pipe(
+  if (!isRefreshing$.value) {
+    isRefreshing$.next(true)
+    return authService.makeRefreshToken()
+    .pipe(
       switchMap(() => {
         const newToken = authService.accessToken as string;
         const retryReq = midifyRequest(req, newToken);
-        isRefreshing = false;
-        return next(retryReq);
+        return next(retryReq).pipe(
+          tap(() => {
+            isRefreshing$.next(false) // make false when request was finish
+          })
+        )
       })
     );
   }
-  return next(midifyRequest(req, authService.accessToken!));
+
+  if(req.url.includes('refresh')) return next(midifyRequest(req, authService.accessToken!))
+
+  return isRefreshing$.pipe( // holdinmg request during refreshing
+    filter(isRefreshing => !isRefreshing),
+    switchMap(res => {
+      return next(midifyRequest(req, authService.accessToken!))
+    })
+  )
+  // return next(midifyRequest(req, authService.accessToken!));
 }
 
 function midifyRequest(req: HttpRequest<any>, token: string) {

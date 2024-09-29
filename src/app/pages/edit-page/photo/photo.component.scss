@@ -1,0 +1,40 @@
+:host {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 123px 1fr;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  // border-bottom: 1px solid var(--light-color);
+}
+
+.avatar {
+  height: 132px;
+  width: 132px;
+  border-radius: 50%;
+}
+
+.dropzone {
+  border-radius: 2px;
+  border: 1px dashed var(--light-color);
+  display: grid;
+  place-content: center;
+  &.fileover {
+    border: 2px dashed var(--purple-color);
+  }
+}
+
+.avatar-input {
+  display: none;
+}
+
+.dropzone-content {
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+        height: 52px;
+        width: 52px;
+    }
+}

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../data/auth/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -24,13 +25,18 @@ export class LoginPageComponent {
   });
 
   isPasswordVisible = signal<boolean>(false);
+  loginSub!: Subscription
 
   onSubmit() {
     if (this.form.valid) {
       // @ts-ignore
-      this.authService.login(this.form.value).subscribe((res) => {
+      this.loginSub = this.authService.login(this.form.value).subscribe((res) => {
         this.router.navigate(['']);
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.loginSub.unsubscribe()
   }
 }

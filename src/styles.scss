@@ -6,14 +6,14 @@
   --dark-color: #000;
   --light-color: #fff;
   --purple-color: #ae7aff;
-  --dark-hover-color: #3d3d3d70
+  --dark-hover-color: #3d3d3d70;
 }
 
 body {
-  /* background-color: var(--dark-color); */
   color: var(--light-color);
   font-family: "JetBrains Mono", sans-serif;
   background-image: url(/assets/imgs/background.jpg);
+  height: 100dvh;
 }
 
 .skill-tag {
@@ -23,12 +23,18 @@ body {
   display: inline;
   font-size: 12px;
   font-weight: 700;
-  /* height: 20px; */
   box-sizing: border-box;
+}
+
+.skills {
+  display: flex; 
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .btn {
   border: none;
+  border-radius: 2px;
   background-color: var(--purple-color);
   color: var(--dark-color);
   padding: 10px 20px;
@@ -37,6 +43,12 @@ body {
   line-height: 24px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.bordered-btn {
+  background: none;
+  border: 1px solid var(--light-color);
+  color: var(--light-color);
 }
 
 .h1 {
@@ -64,4 +76,34 @@ body {
   line-height: 21px;
   font-family: "JetBrains Mono", sans-serif;
   margin-top: 8px;
+}
+
+.standard-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.label-input-underline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label-input-underline_text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.input-underline {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  all: unset;
+  border-bottom: 1px solid var(--light-color);
+  padding-bottom: 12px;
+  resize: vertical;
 }

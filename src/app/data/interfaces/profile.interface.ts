@@ -1,12 +1,12 @@
 export interface Profile {
-  id: number;
+  id: number | string;
   username: string;
   avatarUrl: string | null;
   subscribersAmount: number;
   firstName: string;
   lastName: string;
   isActive: boolean;
-  stack: string[];
+  stack: string[] | [];
   city: string;
   description: string;
 }

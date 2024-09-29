@@ -1,0 +1,8 @@
+@if(profile) {
+<img [src]="profile.avatarUrl | imgUrl" alt="" />
+<div class="info-text">
+  <h4>{{ profile.firstName }} {{ profile.lastName }}</h4>
+  <p>{{ profile.username }}</p>
+</div>
+}
+

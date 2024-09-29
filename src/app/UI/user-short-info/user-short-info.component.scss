@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+p {
+  margin: 0;
+}
+img {
+  border-radius: 50%;
+  height: 110px;
+  width: 110px;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
